@@ -135,8 +135,9 @@ _DEFAULT_TEMPLATE = """services:
   {name}:
     image: {image}
     restart: unless-stopped
-networks: {}
+networks: {{}}
 """
+
 
 
 def get_default_config(image_tag: str) -> str:
@@ -189,7 +190,8 @@ class _LeftPanel(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFixedWidth(380)
+        self.setMinimumWidth(350)
+        self.setMaximumWidth(600)
         self.setStyleSheet(
             f"background:{BG_CARD}; border-right:1px solid {BORDER};"
         )
@@ -385,7 +387,15 @@ class ComposePage(QWidget):
         self._right = _RightPanel()
 
         splitter = QSplitter(Qt.Orientation.Horizontal)
-        splitter.setStyleSheet("QSplitter::handle { background:#222; width:1px; }")
+        splitter.setStyleSheet("""
+            QSplitter::handle {
+                background:#222;
+                width:6px;
+            }
+            QSplitter::handle:hover {
+                background:#444;
+            }
+        """)
         splitter.addWidget(self._left)
         splitter.addWidget(self._right)
         splitter.setSizes([380, 9999])
