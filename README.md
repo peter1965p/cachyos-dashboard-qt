@@ -1,57 +1,77 @@
-## 🧩 Architektur – Die 3 Hauptmodule
+# CachyOS Dashboard
 
-Das CachyOS Dashboard QT besteht aus drei klar getrennten, aber eng verzahnten Funktionsbereichen:
+> Linux DevOps Dashboard — System Monitoring, Docker Management und Compose Editor in einer Qt-App.
 
----
-
-### 1️⃣ System Dashboard (System Overview)
-
-Das Herzstück des Dashboards.  
-Es liefert alle wichtigen Systeminformationen in Echtzeit:
-
-- CPU‑Last, Frequenzen, Kernauslastung  
-- RAM‑Verbrauch & Verlauf  
-- GPU‑Temperatur  
-- Uptime & Systemstatus  
-- Netzwerk‑Monitoring  
-- Disk‑Usage  
-- Top‑Prozesse  
-- Benutzer‑Sessions  
-
-Dieses Modul bildet die Grundlage für alle weiteren Funktionen.
+Kein Portainer-Abo, kein Web-Interface-Overhead. Ein natives Desktop-Dashboard das alles zeigt was ein Linux-Entwickler täglich braucht.
 
 ---
 
-### 2️⃣ Docker Dashboard (Container & Images)
+## Screenshots
 
-Ein vollständiges Docker‑Management‑Panel:
+### System Overview
+![System Overview](./screenshots/lso.overview.png)
 
-- Container starten, stoppen, restarten  
-- Logs einsehen  
-- CPU‑ & RAM‑Verbrauch pro Container  
-- Port‑Mappings  
-- Image‑Übersicht  
-- Status‑Kacheln (laufend, gestoppt, Images, Gesamt)  
-- Automatische Erkennung von Docker‑Events  
+### Docker Container Management
+![Docker](./screenshots/docker.overview.png)
 
-Dieses Modul ersetzt praktisch `docker ps`, `docker stats` und `docker logs` – nur schöner.
+### Docker Compose Editor
+![Compose](./screenshots/dockercompose.overview.png)
 
 ---
 
-### 3️⃣ Compose Editor (Stacks & Deployment)
+## Features
 
-Ein integrierter Compose‑Editor mit:
+### 🖥️ System Overview
+- CPU Load, RAM, GPU Temp, Uptime — live
+- System Performance Graph (CPU % / RAM %)
+- Netzwerk-Interfaces mit Durchsatz
+- Firewall-Status und Regeln
+- Angemeldete Benutzer
+- Festplatten-Auslastung
+- Top Prozesse nach CPU/MEM
 
-- Live‑Editor für `docker-compose.yml`  
-- `.env`‑Editor  
-- Stack‑Name‑Verwaltung  
-- Docker Hub Suche  
-- Deploy‑Button  
-- Speichern‑Button  
-- Automatische Stack‑Erkennung  
+### 🐳 Docker Management
+- Container-Übersicht (laufend / gestoppt / Images)
+- Start, Stop, Restart pro Container
+- Live CPU/MEM pro Container
+- Log-Viewer direkt in der UI
+- Docker Hub Suche
 
-Damit kannst du komplette Docker‑Stacks direkt aus dem Dashboard heraus deployen.
-
-Dieses Modul macht das Dashboard zu einem **vollwertigen Operator‑Tool**.
+### 📝 Docker Compose Editor
+- Compose-Stacks verwalten
+- docker-compose.yml direkt bearbeiten
+- .env Dateien editieren
+- Ein-Klick Deploy
 
 ---
+
+## Stack
+
+- **Python**
+- **Qt** (PyQt/PySide)
+- **Docker SDK**
+- **psutil** für System-Metriken
+
+---
+
+## Setup
+
+```bash
+# Dependencies installieren
+pip install -r requirements.txt
+
+# Starten
+python main.py
+```
+
+---
+
+## Warum?
+
+Portainer ist gut — aber browserbasiert, schwergewichtig und für lokale Entwicklung überdimensioniert. CachyOS Dashboard ist eine native Qt-App die in Sekunden startet und alles auf einen Blick zeigt.
+
+---
+
+## Autor
+
+**Peter Päffgen** — [paeffgen-it.de](https://paeffgen-it.de) · [GitHub](https://github.com/peter1965p)
